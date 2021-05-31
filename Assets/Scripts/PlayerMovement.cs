@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float runSpeed = 40f;
 
-    public CharacterController controller;
+    public CharacterController2D controller;
 
     public Transform hitCheck;
 
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        controller = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController2D>();
         animator = GetComponent<Animator>();
     }
 
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, false,jump);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
         jump = false;
     }
 
