@@ -9,10 +9,21 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 40f;
 
     public CharacterController controller;
-    
+
+    public Transform hitCheck;
+
+    public float hitCheckRadius;
+
+    public float hitForce = 10;
+
+    public float upwardsHitForce = 10;
+    public float sidewardsHitForce = 10;
+
     private Animator animator;
 
     bool jump;
+
+    public LayerMask enemyLayer;
 
     private void Start()
     {
@@ -32,6 +43,33 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(hitCheck.position, hitCheckRadius, enemyLayer);
+
+            // Checking whether player hit at bottom
+            if (colliders.Length > 0) {
+                colliders[0].gameObject.GetComponent<EnemyOpossum>().Hit();
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, hitForce), ForceMode2D.Impulse);
+            }
+            else
+            {
+                Debug.Log("Hit by Enemy");
+            }
+
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (hitCheck != null)
+        {
+            Gizmos.DrawWireSphere(hitCheck.position, hitCheckRadius);
+        }
+    }
+
     private void FixedUpdate()
     {
         controller.Move(horizontalMove * Time.fixedDeltaTime, false,jump);
@@ -40,7 +78,20 @@ public class PlayerMovement : MonoBehaviour
 
     public void StopJump()
     {
-        Debug.Log("StopJump");
         animator.SetBool("IsJumping", false);
     }
+
+    public void Hit(Direction direction)
+    {
+        
+         GetComponent<Rigidbody2D>().AddForce(new Vector2(sidewardsHitForce*
+             (direction == Direction.Left?1:-1),upwardsHitForce ));
+        Debug.Log("Hit");
+    }
+}
+
+public enum Direction
+{
+    Left,
+    Right
 }

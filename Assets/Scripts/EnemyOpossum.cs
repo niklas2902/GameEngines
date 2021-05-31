@@ -33,4 +33,9 @@ public class EnemyOpossum : MonoBehaviour
             direction = direction == -1 ? 1 : -1;
         }
     }
+
+    public void Hit()
+    {
+        Debug.Log("Hit");
+    }
 }
