@@ -59,8 +59,12 @@ public class CharacterController2D : MonoBehaviour
             rigidbody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
         }
 
-        Flip(horizontalMove);
-        
+        Flip(horizontalMove);   
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
 
     void Flip(float horizontalMove)

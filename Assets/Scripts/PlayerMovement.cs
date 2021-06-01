@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
             // Checking whether player hit at bottom
             if (colliders.Length > 0) {
                 colliders[0].gameObject.GetComponent<EnemyOpossum>().Hit();
+                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 0);
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, hitForce), ForceMode2D.Impulse);
             }
             else

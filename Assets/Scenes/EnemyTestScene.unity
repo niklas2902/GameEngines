@@ -2892,7 +2892,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7895486632196414886, guid: 292457dfb7926c347b435af55113aa6e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 292457dfb7926c347b435af55113aa6e, type: 3}
 --- !u!4 &7966677589896035830 stripped
 Transform:
@@ -2932,7 +2933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 7966677589896035830}
   groundCheckRadius: 0.4
-  jumpSpeed: 40
+  jumpSpeed: 12
   horizonalSpeed: 200
   movementSmoothing: 0.05
   groundMask:
