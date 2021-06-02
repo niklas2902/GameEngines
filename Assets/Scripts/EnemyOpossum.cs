@@ -6,10 +6,11 @@ public class EnemyOpossum : MonoBehaviour
 {
     public float moveSpeed = 5f;
     private float direction = -1;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -19,7 +20,7 @@ public class EnemyOpossum : MonoBehaviour
         if(movement.x > 0)
         {
             transform.localRotation = Quaternion.Euler(0, 180, 0);
-        } else
+        } else if(movement.x < 0)
         {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
@@ -36,6 +37,18 @@ public class EnemyOpossum : MonoBehaviour
 
     public void Hit()
     {
-        Debug.Log("Hit");
+        GetComponent<Rigidbody2D>().isKinematic = true;
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().Sleep();
+
+        direction = 0;
+
+        anim.SetBool("isDeath", true);
+        Invoke(nameof(Kill), anim.GetCurrentAnimatorStateInfo(0).length);
+    }
+
+    void Kill()
+    {
+        Destroy(gameObject);
     }
 }
