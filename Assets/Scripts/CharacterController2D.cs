@@ -53,7 +53,6 @@ public class CharacterController2D : MonoBehaviour
         // And then smoothing it out and applying it to the character
         rigidbody.velocity = Vector2.SmoothDamp(rigidbody.velocity, targetVelocity, ref velocity, movementSmoothing);
 
-        Debug.Log(jump + "|" + isGrounded);
         if(jump && isGrounded)
         {
             rigidbody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);

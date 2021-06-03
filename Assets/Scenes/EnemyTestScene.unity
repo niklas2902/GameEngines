@@ -290,7 +290,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &555432191
 MonoBehaviour:
@@ -405,7 +405,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1067819887
 GameObject:
@@ -1711,7 +1711,7 @@ Transform:
   - {fileID: 1078594314}
   - {fileID: 2036069389}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2036069388
 GameObject:
@@ -2824,8 +2824,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7895486632196414882, guid: 292457dfb7926c347b435af55113aa6e,
         type: 3}
+      propertyPath: upwardsHitForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7895486632196414882, guid: 292457dfb7926c347b435af55113aa6e,
+        type: 3}
       propertyPath: sidewardsHitForce
-      value: 10
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7895486632196414885, guid: 292457dfb7926c347b435af55113aa6e,
         type: 3}
@@ -2840,7 +2845,7 @@ PrefabInstance:
     - target: {fileID: 7895486632196414887, guid: 292457dfb7926c347b435af55113aa6e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7895486632196414887, guid: 292457dfb7926c347b435af55113aa6e,
         type: 3}
@@ -2932,7 +2937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 7966677589896035830}
-  groundCheckRadius: 0.4
+  groundCheckRadius: 0.2
   jumpSpeed: 12
   horizonalSpeed: 200
   movementSmoothing: 0.05

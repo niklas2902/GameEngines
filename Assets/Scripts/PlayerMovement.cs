@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
 
     public float upwardsHitForce = 10;
     public float sidewardsHitForce = 10;
+
+    public readonly float reloadTime = 1;
+
+    private bool isDead = false;
 
     private Animator animator;
 
@@ -57,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                Debug.Log("Hit by Enemy");
+                Hit();
             }
 
         }
@@ -73,7 +76,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
+        if (!isDead){
+            controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
+        }
         jump = false;
     }
 
@@ -82,12 +87,16 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsJumping", false);
     }
 
-    public void Hit(Direction direction)
+    public void Hit()
     {
-        
-         GetComponent<Rigidbody2D>().AddForce(new Vector2(sidewardsHitForce*
-             (direction == Direction.Left?1:-1),upwardsHitForce ));
-        Debug.Log("Hit");
+        isDead = true;
+        GetComponent<CapsuleCollider2D>().isTrigger = true;
+        animator.SetBool("Hit", true);
+        Invoke("ReloadLevel", reloadTime);
+    }
+
+    public void ReloadLevel() {
+        SceneManager.LoadScene(0);
     }
 }
 
