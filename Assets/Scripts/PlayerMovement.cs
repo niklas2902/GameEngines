@@ -90,7 +90,8 @@ public class PlayerMovement : MonoBehaviour
     public void Hit()
     {
         isDead = true;
-        GetComponent<CapsuleCollider2D>().isTrigger = true;
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         animator.SetBool("Hit", true);
         Invoke("ReloadLevel", reloadTime);
     }

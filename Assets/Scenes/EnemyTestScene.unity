@@ -2832,6 +2832,11 @@ PrefabInstance:
       propertyPath: sidewardsHitForce
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 7895486632196414884, guid: 292457dfb7926c347b435af55113aa6e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7895486632196414885, guid: 292457dfb7926c347b435af55113aa6e,
         type: 3}
       propertyPath: m_Mass
