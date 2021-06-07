@@ -27,9 +27,9 @@ public class EnemyOpossum : MonoBehaviour
         transform.position += movement * Time.deltaTime * moveSpeed;
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (col.gameObject.tag == "Obstacles")
+        if (collision.gameObject.tag == "Obstacles")
         {
             direction = direction == -1 ? 1 : -1;
         }
