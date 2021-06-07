@@ -34,7 +34,7 @@ public class CharacterController2D : MonoBehaviour
     {
         isGrounded = checkGrounded();
 
-        if(isGrounded && !wasGrounded && rigidbody.velocity.y <= 0)
+        if(isGrounded && !wasGrounded)
         {
             OnLandEvent.Invoke();
         }

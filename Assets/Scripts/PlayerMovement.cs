@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float runSpeed = 40f;
 
-    public CharacterController2D controller;
+    private CharacterController2D controller;
 
     public Transform hitCheck;
 
@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !isDead)
         {
             animator.SetBool("IsJumping", true);
             jump = true;

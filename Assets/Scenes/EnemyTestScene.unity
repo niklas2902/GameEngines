@@ -335,6 +335,8 @@ GameObject:
   - component: {fileID: 699441758}
   - component: {fileID: 699441757}
   - component: {fileID: 699441756}
+  - component: {fileID: 699441759}
+  - component: {fileID: 699441760}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -407,6 +409,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &699441759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699441755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+--- !u!114 &699441760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699441755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aeb35e0ab80fd4594258d96481e2f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  observeObject: {fileID: 7966677590682503452}
 --- !u!1 &1067819887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,8 +1645,8 @@ Tilemap:
   - first: {x: -6, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1616,11 +1662,15 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 4
+  - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 837eca652c589c447b7a54f7e2c3fd87, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: d7214273eff04f54bbe56594bb1ea187, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 4
+  - m_RefCount: 3
     m_Data: {fileID: 21300006, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300002, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 4
     m_Data:
@@ -2902,6 +2952,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7895486633012291904, guid: 292457dfb7926c347b435af55113aa6e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7895486632196414886, guid: 292457dfb7926c347b435af55113aa6e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 292457dfb7926c347b435af55113aa6e, type: 3}
@@ -2942,7 +2997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 7966677589896035830}
-  groundCheckRadius: 0.2
+  groundCheckRadius: 0.05
   jumpSpeed: 12
   horizonalSpeed: 200
   movementSmoothing: 0.05
@@ -2963,3 +3018,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!4 &7966677590682503452 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7895486632196414887, guid: 292457dfb7926c347b435af55113aa6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 224393064714310838}
+  m_PrefabAsset: {fileID: 0}
