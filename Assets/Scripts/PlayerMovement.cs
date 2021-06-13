@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void ReloadLevel() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 
