@@ -27,11 +27,10 @@ public class EnemyEagle : MonoBehaviour
 
     public void Hit()
     {
-        GetComponent<Rigidbody2D>().isKinematic = true;
         GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<Rigidbody2D>().Sleep();
-
-        //direction = 0;
+        transform.parent.GetComponent<CircleCollider2D>().enabled = false;
+        transform.parent.GetComponent<AIPath>().enabled = false;
+        transform.parent.GetComponent<Seeker>().enabled = false;
 
         anim.SetBool("isDeath", true);
         Invoke(nameof(Kill), anim.GetCurrentAnimatorStateInfo(0).length);
@@ -39,6 +38,7 @@ public class EnemyEagle : MonoBehaviour
 
     void Kill()
     {
+        Destroy(transform.parent.gameObject);
         Destroy(gameObject);
     }
 }
