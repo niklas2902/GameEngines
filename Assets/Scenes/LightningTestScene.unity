@@ -4739,8 +4739,8 @@ MonoBehaviour:
   - {x: 12, y: 0, z: 0}
   - {x: -12, y: 0, z: 0}
   m_ShapePathHash: 0
-  m_Mesh: {fileID: 1252991106}
-  m_InstanceId: 17390
+  m_Mesh: {fileID: 1200545795}
+  m_InstanceId: 26820
 --- !u!1 &1078594313
 GameObject:
   m_ObjectHideFlags: 0
@@ -4953,7 +4953,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 268372888}
   m_PrefabAsset: {fileID: 0}
---- !u!43 &1252991106
+--- !u!43 &1200545795
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10029,7 +10029,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
-  m_LightCookieSprite: {fileID: 21300000, guid: 52422ada2db954026a3ae1f1ba6b4486,
+  m_LightCookieSprite: {fileID: 21300000, guid: ef551045a4e1a0b4d874aecb98a1727e,
     type: 3}
   m_UseNormalMap: 0
   m_LightOrder: 0
