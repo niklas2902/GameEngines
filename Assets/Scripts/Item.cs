@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        animator = GetComponent<Animator>();   
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Trigger Enter");
-        Destroy(this.gameObject);
+        animator.SetTrigger("Activate");
+    }
+
+    private void Remove()
+    {
+        Destroy(gameObject);
     }
 
 }
