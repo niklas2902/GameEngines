@@ -15,7 +15,6 @@ public class Item : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Trigger Enter");
         animator.SetTrigger("Activate");
     }
 
