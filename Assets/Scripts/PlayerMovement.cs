@@ -57,9 +57,12 @@ public class PlayerMovement : MonoBehaviour
                 if (colliders[0].gameObject.GetComponent<EnemyOpossum>())
                 {
                     colliders[0].gameObject.GetComponent<EnemyOpossum>().Hit();
-                } else
+                } else if (colliders[0].gameObject.GetComponent<EnemyEagle>())
                 {
                     colliders[0].gameObject.GetComponent<EnemyEagle>().Hit();
+                } else
+                {
+                    colliders[0].gameObject.transform.parent.GetComponent<EnemyAI>().Hit();
                 }
             
                 GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 0);

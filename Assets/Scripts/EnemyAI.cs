@@ -6,20 +6,19 @@ using Pathfinding;
 public class EnemyAI : MonoBehaviour
 {
     public Transform target;
-    public float speed = 400f;
+    public float speed = 2f;
     public float nextWaypointDistance = 1.2f;
     public Transform enemyGX;
     Path path;
     int currentWaypoint = 0;
-    bool reachedEndOfPath = false;
     Seeker seeker;
-    Rigidbody2D rb;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         seeker = GetComponent<Seeker>();
-        rb = GetComponent<Rigidbody2D>();
+        anim = transform.GetChild(0).GetComponent<Animator>();
 
         InvokeRepeating(nameof(UpdatePath), 0f, 0.5f);
     }
@@ -33,31 +32,25 @@ public class EnemyAI : MonoBehaviour
         }
         if (currentWaypoint >= path.vectorPath.Count)
         {
-            reachedEndOfPath = true;
             return;
         }
-        else
-        {
-            reachedEndOfPath = false;
-        }
-
-        Vector2 direction = ((Vector2) path.vectorPath[currentWaypoint] - rb.position).normalized;
+        Vector2 direction = ((Vector2) path.vectorPath[currentWaypoint] - new Vector2(transform.position.x, transform.position.y)).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
 
-        rb.AddForce(force);
+        transform.Translate(force);
 
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+        float distance = Vector2.Distance(new Vector2(transform.position.x, transform.position.y), path.vectorPath[currentWaypoint]);
 
         if(distance < nextWaypointDistance)
         {
             currentWaypoint++;
         }
 
-        if (rb.velocity.x >= 0.01f)
+        if (force.x > 0)
         {
             enemyGX.localScale = new Vector3(-1f, 1f, 1f);
         }
-        else if (rb.velocity.x <= 0.01f)
+        else if (force.x < 0)
         {
             enemyGX.localScale = new Vector3(1f, 1f, 1f);
         }
@@ -76,8 +69,25 @@ public class EnemyAI : MonoBehaviour
     {
         if (seeker.IsDone())
         {
-            seeker.StartPath(rb.position, target.position, OnPathComplete);
+            seeker.StartPath(new Vector2(transform.position.x, transform.position.y), target.position, OnPathComplete);
         }
         
+    }
+
+    public void Hit()
+    {
+        speed = 0;
+        enemyGX.GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<CircleCollider2D>().enabled = false;
+        GetComponent<Seeker>().enabled = false;
+
+        anim.SetBool("isDeath", true);
+        Invoke(nameof(Kill), anim.GetCurrentAnimatorStateInfo(0).length);
+    }
+
+    void Kill()
+    {
+        Destroy(enemyGX.gameObject);
+        Destroy(gameObject);
     }
 }
