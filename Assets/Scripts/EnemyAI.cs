@@ -19,9 +19,9 @@ public class EnemyAI : MonoBehaviour
     private bool reachedEndOfPath;
     private bool backPath;
     private Vector2 direction;
- 
+    private GridGraph grid;
+    private string collisionHit;
 
-    // Start is called before the first frame update
     void Start()
     {
         seeker = GetComponent<Seeker>();
@@ -31,26 +31,27 @@ public class EnemyAI : MonoBehaviour
         inInitPos = true;
         backPath = false;
         direction = new Vector2(-1, 0);
+        grid = (GridGraph)AstarPath.active.data.graphs[0];
 
         InvokeRepeating(nameof(UpdatePath), 0f, 0.5f);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(path == null)
+        if (path == null)
         {
-            if(transform.position.x < -7)
+            if (collisionHit == "left")
             {
-                direction = (new Vector2(7, initPos.y) - new Vector2(0, transform.position.y)).normalized;
+                direction = new Vector2(1, 0);
             }
-            else if (transform.position.x > 7)
+            else if (collisionHit == "right")
             {
-                direction = (new Vector2(-7, initPos.y) - new Vector2(0, transform.position.y)).normalized;
+                direction = new Vector2(-1, 0);
             }
 
             transform.Translate(direction * speed * Time.deltaTime);
-        } else
+        }
+        else
         {
             if (currentWaypoint >= path.vectorPath.Count)
             {
@@ -64,9 +65,7 @@ public class EnemyAI : MonoBehaviour
             if (!reachedEndOfPath)
             {
                 direction = ((Vector2)path.vectorPath[currentWaypoint] - new Vector2(transform.position.x, transform.position.y)).normalized;
-                Vector2 movement = direction * speed * Time.deltaTime;
-
-                transform.Translate(movement);
+                transform.Translate(direction * speed * Time.deltaTime);
 
                 float distance = Vector2.Distance(new Vector2(transform.position.x, transform.position.y), path.vectorPath[currentWaypoint]);
 
@@ -74,22 +73,24 @@ public class EnemyAI : MonoBehaviour
                 {
                     currentWaypoint++;
                 }
-
-
-
             }
 
             if (reachedEndOfPath && backPath)
             {
-                inInitPos = true;
-                backPath = false;
-                path = null;
-                direction = (new Vector2(-7, initPos.y) - new Vector2(0, transform.position.y)).normalized;
-
-
+                if(direction.y > 0 && transform.position.y < initPos.y || direction.y < 0 && transform.position.y > initPos.y)
+                {
+                    transform.Translate((new Vector2(transform.position.x,initPos.y) - new Vector2(transform.position.x, transform.position.y)).normalized * speed * Time.deltaTime);
+                }
+                else
+                {
+                    inInitPos = true;
+                    backPath = false;
+                    path = null;
+                    direction = new Vector2(-1, 0);
+                }
             }
         }
-        
+
 
         if (direction.x > 0)
         {
@@ -128,13 +129,13 @@ public class EnemyAI : MonoBehaviour
     {
         if (seeker.IsDone())
         {
-            if (target.position.x < -12 || target.position.x > 11)
+            if (target.position.x < grid.center.x - 0.5f * grid.width || target.position.x > grid.center.x + 0.5f * grid.width)
             {
                 if (!inInitPos)
                 {
                     seeker.StartPath(new Vector2(transform.position.x, transform.position.y), new Vector2(initPos.x, initPos.y), OnPathCompleteBack);
                 }
-                
+
             }
             else
             {
@@ -161,5 +162,22 @@ public class EnemyAI : MonoBehaviour
     {
         Destroy(enemyGX.gameObject);
         Destroy(gameObject);
+    }
+
+    public void CollisionDetected(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            if (direction.x < 0)
+            {
+                collisionHit = "left";
+
+            }
+            else if (direction.x > 0)
+            {
+                collisionHit = "right";
+            }
+        }
+            
     }
 }
