@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMove = 0f;
 
     public float runSpeed = 40f;
-
     private CharacterController2D controller;
 
     public Transform hitCheck;

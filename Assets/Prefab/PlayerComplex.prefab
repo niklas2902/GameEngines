@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6456782932828742923}
   - component: {fileID: 2552431427621237089}
   - component: {fileID: 820754375547951580}
-  - component: {fileID: 3318729682226909965}
+  - component: {fileID: 6568254203107409997}
   m_Layer: 8
   m_Name: PlayerComplex
   m_TagString: Untagged
@@ -37,6 +37,7 @@ Transform:
   - {fileID: 3318729683051046892}
   - {fileID: 3318729683025121102}
   - {fileID: 7318120623013456025}
+  - {fileID: 8839798462805243825}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -143,6 +144,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 40
+  climbSpeed: 10
+  ladderCollider: {fileID: 8839798462805243825}
+  ladderMask:
+    serializedVersion: 2
+    m_Bits: 2048
   hitCheck: {fileID: 7318120623013456025}
   hitCheckRadius: 0.3
   hitForce: 10
@@ -153,6 +159,8 @@ MonoBehaviour:
     m_Bits: 512
   colliderNomal: {fileID: 820754375547951580}
   colliderCrouch: {fileID: 2552431427621237089}
+  isCrouching: 0
+  verticalMove: 0
 --- !u!70 &2552431427621237089
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -185,7 +193,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.059952796, y: -0.38796675}
   m_Size: {x: 0.86891925, y: 1.2130091}
   m_Direction: 0
---- !u!114 &3318729682226909965
+--- !u!114 &6568254203107409997
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,7 +202,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3318729682226909964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbe12126efc2c944497255b0229d13bd, type: 3}
+  m_Script: {fileID: 11500000, guid: bafa076d4145f1f439df31eeac6f009c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 3318729683051046892}
@@ -278,6 +286,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3318729682226909963}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5628921528558808349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8839798462805243825}
+  m_Layer: 0
+  m_Name: LadderCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8839798462805243825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5628921528558808349}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3318729682226909963}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8496935137669035880
 GameObject:

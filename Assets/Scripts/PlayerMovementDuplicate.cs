@@ -6,8 +6,13 @@ public class PlayerMovementDuplicate : MonoBehaviour
     float horizontalMove = 0f;
 
     public float runSpeed = 40f;
+    public float climbSpeed = 10f;
 
-    private CharacterController2D controller;
+    private CharacterController2DDuplicate controller;
+
+    public Transform ladderCollider;
+
+    public LayerMask ladderMask;
 
     public Transform hitCheck;
 
@@ -33,9 +38,20 @@ public class PlayerMovementDuplicate : MonoBehaviour
 
     public bool isCrouching;
 
+    public float verticalMove;
+
+    private bool isClimbing = false;
+
+    private bool inLadderZone;
+    public bool InLadderZone { get {
+            return inLadderZone;
+        } set { inLadderZone = value;
+            isClimbing = false;
+        } }
+
     private void Start()
     {
-        controller = GetComponent<CharacterController2D>();
+        controller = GetComponent<CharacterController2DDuplicate>();
         animator = GetComponent<Animator>();
     }
 
@@ -44,19 +60,45 @@ public class PlayerMovementDuplicate : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.S) && !isDead)
         {
-            animator.SetBool("IsCrouching", true);
-            animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-            colliderCrouch.enabled = true;
-            colliderNomal.enabled = false;
-            isCrouching = true;
-            horizontalMove = 0;
+            if (!isClimbing)
+            {
+                animator.SetBool("IsCrouching", true);
+                animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+                colliderCrouch.enabled = true;
+                colliderNomal.enabled = false;
+                isCrouching = true;
+                horizontalMove = 0;
+            }
+            else
+            {
+                verticalMove = -climbSpeed;
+            }
         }
+
         else if (!isDead)
         {
             animator.SetBool("IsCrouching", false);
             colliderCrouch.enabled = false;
             colliderNomal.enabled = true;
             isCrouching = false;
+        }
+
+        if (Input.GetKey(KeyCode.W) && InLadderZone) {
+            animator.SetBool("IsClimbing", true);
+            animator.SetBool("IsJumping", false);
+            isClimbing = true;
+            verticalMove = climbSpeed;
+        }
+        else
+        {
+            if (!Input.GetKey(KeyCode.S))
+            {
+                verticalMove = 0;
+            }
+            if (!isClimbing)
+            {
+                animator.SetBool("IsClimbing", false);
+            }
         }
 
         if (!isCrouching)
@@ -109,9 +151,26 @@ public class PlayerMovementDuplicate : MonoBehaviour
     private void FixedUpdate()
     {
         if (!isDead){
-            controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
+            Debug.Log("verticalMove:" + verticalMove);
+            if (isClimbing && verticalMove == 0 && horizontalMove == 0) {
+                animator.speed = 0;
+            }
+            else
+            {
+                animator.speed = 1;
+            }
+
+            if (!CheckLadder() && verticalMove > 0) {
+                verticalMove = 0;
+            }
+            controller.Move(horizontalMove * Time.fixedDeltaTime,verticalMove * Time.fixedDeltaTime, jump, isClimbing);
         }
         jump = false;
+    }
+
+    bool CheckLadder()
+    {
+        return Physics2D.OverlapCircleAll(ladderCollider.position, 0.5f, ladderMask).Length != 0;
     }
 
     public void StopJump()
