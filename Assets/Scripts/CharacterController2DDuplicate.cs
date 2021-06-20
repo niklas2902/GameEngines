@@ -68,7 +68,10 @@ public class CharacterController2DDuplicate : MonoBehaviour
             rigidbody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
         }
 
-        Flip(horizontalMove);   
+        if (!isClimbing)
+        {
+            Flip(horizontalMove);
+        }
     }
 
     private void OnDrawGizmos()
