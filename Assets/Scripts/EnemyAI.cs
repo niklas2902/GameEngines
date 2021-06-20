@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour
     private bool backPath;
     private Vector2 direction;
     private GridGraph grid;
-    private string collisionHit;
+    private Direction collisionHit;
 
     void Start()
     {
@@ -32,21 +32,24 @@ public class EnemyAI : MonoBehaviour
         backPath = false;
         direction = new Vector2(-1, 0);
         grid = (GridGraph)AstarPath.active.data.graphs[0];
+        collisionHit = Direction.None;
 
         InvokeRepeating(nameof(UpdatePath), 0f, 0.5f);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (path == null)
         {
-            if (collisionHit == "left")
+            if (collisionHit == Direction.Left)
             {
                 direction = new Vector2(1, 0);
+                collisionHit = Direction.None;
             }
-            else if (collisionHit == "right")
+            else if (collisionHit == Direction.Right)
             {
                 direction = new Vector2(-1, 0);
+                collisionHit = Direction.None;
             }
 
             transform.Translate(direction * speed * Time.deltaTime);
@@ -166,16 +169,15 @@ public class EnemyAI : MonoBehaviour
 
     public void CollisionDetected(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground" && inInitPos)
         {
             if (direction.x < 0)
             {
-                collisionHit = "left";
-
+                collisionHit = Direction.Left;
             }
             else if (direction.x > 0)
             {
-                collisionHit = "right";
+                collisionHit = Direction.Right;
             }
         }
             

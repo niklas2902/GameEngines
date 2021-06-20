@@ -113,5 +113,6 @@ public class PlayerMovement : MonoBehaviour
 public enum Direction
 {
     Left,
-    Right
+    Right,
+    None
 }
