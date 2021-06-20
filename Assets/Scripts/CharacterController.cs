@@ -97,6 +97,7 @@ public class CharacterController : MonoBehaviour
 		}
 	}
 
+
     private void OnDrawGizmos()
     {
 		Gizmos.DrawWireSphere(m_GroundCheck.position, k_GroundedRadius);
