@@ -56,10 +56,16 @@ public class PlayerMovement : MonoBehaviour
                 if (colliders[0].gameObject.GetComponent<EnemyOpossum>())
                 {
                     colliders[0].gameObject.GetComponent<EnemyOpossum>().Hit();
-                } else if (colliders[0].gameObject.GetComponent<EnemyEagle>())
+                }
+                else if (colliders[0].gameObject.GetComponent<EnemyEagle>())
                 {
                     colliders[0].gameObject.GetComponent<EnemyEagle>().Hit();
-                } else
+                }
+                else if (colliders[0].gameObject.GetComponent<EnemyFrog>())
+                {
+                    colliders[0].gameObject.GetComponent<EnemyFrog>().Hit();
+                }
+                else
                 {
                     colliders[0].gameObject.transform.parent.GetComponent<EnemyAI>().Hit();
                 }
