@@ -49,6 +49,8 @@ public class PlayerMovementDuplicate : MonoBehaviour
             isClimbing = false;
         } }
 
+    public bool Won { get; set; } = false;
+
     private void Start()
     {
         controller = GetComponent<CharacterController2DDuplicate>();
@@ -75,7 +77,7 @@ public class PlayerMovementDuplicate : MonoBehaviour
             }
         }
 
-        else if (!isDead)
+        else if (!isDead && !Won)
         {
             animator.SetBool("IsCrouching", false);
             colliderCrouch.enabled = false;
@@ -110,6 +112,11 @@ public class PlayerMovementDuplicate : MonoBehaviour
                 animator.SetBool("IsJumping", true);
                 jump = true;
             }
+        }
+        if (Won)
+        {
+            animator.SetFloat("Speed", 0);
+
         }
     }
 
@@ -150,7 +157,7 @@ public class PlayerMovementDuplicate : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isDead){
+        if (!isDead && !Won){
             Debug.Log("verticalMove:" + verticalMove);
             if (isClimbing && verticalMove == 0 && horizontalMove == 0) {
                 animator.speed = 0;
