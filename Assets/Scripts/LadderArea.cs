@@ -16,7 +16,6 @@ public class LadderArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Trigger Enter");
         PlayerMovementDuplicate playerMovement = collision.gameObject.GetComponent<PlayerMovementDuplicate>();
         if (playerMovement != null)
         {
@@ -26,7 +25,6 @@ public class LadderArea : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Trigger Exit");
         PlayerMovementDuplicate playerMovement = collision.gameObject.GetComponent<PlayerMovementDuplicate>();
         if (playerMovement != null) {
             playerMovement.InLadderZone = false;
