@@ -158,7 +158,6 @@ public class PlayerMovementDuplicate : MonoBehaviour
     private void FixedUpdate()
     {
         if (!isDead && !Won){
-            Debug.Log("verticalMove:" + verticalMove);
             if (isClimbing && verticalMove == 0 && horizontalMove == 0) {
                 animator.speed = 0;
             }
