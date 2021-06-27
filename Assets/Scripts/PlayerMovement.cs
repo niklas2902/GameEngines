@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsJumping", true);
             jump = true;
         }
+       
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
