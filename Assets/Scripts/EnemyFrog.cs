@@ -20,6 +20,7 @@ public class EnemyFrog : MonoBehaviour
     private bool jump = false;
     private float direction = 1;
     private bool timeToJump = false;
+    private bool skipJump = false;
 
     // Start is called before the first frame update
     void Start()
@@ -87,21 +88,26 @@ public class EnemyFrog : MonoBehaviour
     void Jump()
     {
         timeToJump = false;
-        rb.AddForce(new Vector2(direction * jumpSpeed / 2, jumpSpeed), ForceMode2D.Impulse);
-        anim.SetBool("isJumping", true);
-        jump = true;
-        Invoke(nameof(WaitForJump), waitTime); //deltaTime?
-    }
-
-    void WaitForJump()
-    {
-        CheckDirection();
-        timeToJump = true;
+        if (!skipJump)
+        {
+            rb.AddForce(new Vector2(direction * jumpSpeed / 2, jumpSpeed), ForceMode2D.Impulse);
+            anim.SetBool("isJumping", true);
+            jump = true;
+        }
+        skipJump = false;
+        Invoke(nameof(CheckDirection), waitTime);
     }
 
     void CheckDirection()
     {
         Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, radius, playerMask);
-        direction = transform.position.x < playerCollider.transform.position.x ? 1 : -1;
+        if(playerCollider != null)
+        {
+            direction = transform.position.x < playerCollider.transform.position.x ? 1 : -1;
+        } else
+        {
+            skipJump = true;
+        }
+        timeToJump = true;
     }
 }
