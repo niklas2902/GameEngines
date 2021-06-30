@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask enemyLayer;
 
+    public bool showPlayerHitCollider;
+
     private void Start()
     {
         controller = GetComponent<CharacterController2D>();
@@ -68,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (hitCheck != null)
+        if (hitCheck != null && showPlayerHitCollider)
         {
             Gizmos.DrawWireSphere(hitCheck.position, hitCheckRadius);
         }

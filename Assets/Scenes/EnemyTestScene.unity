@@ -10205,7 +10205,7 @@ PrefabInstance:
     - target: {fileID: 167950854387544024, guid: 3b03324e83d098a438b8f6ae3debdc4f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.77
       objectReference: {fileID: 0}
     - target: {fileID: 167950854387544024, guid: 3b03324e83d098a438b8f6ae3debdc4f,
         type: 3}
@@ -10348,8 +10348,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3318729682226909965, guid: c6d201d7a948a444fa2f67e9f10b6c70,
         type: 3}
+      propertyPath: showGroundCheck
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318729682226909965, guid: c6d201d7a948a444fa2f67e9f10b6c70,
+        type: 3}
       propertyPath: groundMask.m_Bits
       value: 1079
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318729682226909966, guid: c6d201d7a948a444fa2f67e9f10b6c70,
+        type: 3}
+      propertyPath: showPlayerHitCollider
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318729683051046892, guid: c6d201d7a948a444fa2f67e9f10b6c70,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318120623013456025, guid: c6d201d7a948a444fa2f67e9f10b6c70,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6d201d7a948a444fa2f67e9f10b6c70, type: 3}
