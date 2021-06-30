@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class EnemyAI : MonoBehaviour
+public class EagleComplex : MonoBehaviour
 {
     public Transform target;
     public float speed = 2f;
@@ -39,6 +39,17 @@ public class EnemyAI : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (enemyGX.GetComponent<Enemy>().hit)
+        {
+            speed = 0;
+            GetComponent<CircleCollider2D>().enabled = false;
+            GetComponent<Seeker>().enabled = false;
+            if (enemyGX.GetComponent<Enemy>().destroyed)
+            {
+                Destroy(gameObject);
+            }
+        }
+
         if (path == null)
         {
             if (collisionHit == Direction.Left)
@@ -147,24 +158,6 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-    }
-
-
-    public void Hit()
-    {
-        speed = 0;
-        enemyGX.GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<CircleCollider2D>().enabled = false;
-        GetComponent<Seeker>().enabled = false;
-
-        anim.SetBool("isDeath", true);
-        Invoke(nameof(Kill), anim.GetCurrentAnimatorStateInfo(0).length);
-    }
-
-    void Kill()
-    {
-        Destroy(enemyGX.gameObject);
-        Destroy(gameObject);
     }
 
     public void CollisionDetected(Collision2D collision)

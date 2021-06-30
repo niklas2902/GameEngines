@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemyFrog : MonoBehaviour
+public class Frog : Enemy
 {
     private Animator anim;
     private Rigidbody2D rb;
@@ -22,7 +22,6 @@ public class EnemyFrog : MonoBehaviour
     private bool timeToJump = false;
     private bool skipJump = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -30,7 +29,6 @@ public class EnemyFrog : MonoBehaviour
         Invoke(nameof(CheckDirection), waitTime);
     }
 
-    // Update is called once per frame
     private void FixedUpdate()
     {
         isGrounded = checkGrounded();
@@ -63,21 +61,6 @@ public class EnemyFrog : MonoBehaviour
             anim.SetBool("jumpDown", true);
         }
 
-    }
-
-    public void Hit()
-    {
-        GetComponent<Rigidbody2D>().isKinematic = true;
-        GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<Rigidbody2D>().Sleep();
-
-        anim.SetBool("isDead", true);
-        Invoke(nameof(Kill), anim.GetCurrentAnimatorStateInfo(0).length);
-    }
-
-    void Kill()
-    {
-        Destroy(gameObject);
     }
 
     bool checkGrounded()

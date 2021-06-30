@@ -128,14 +128,7 @@ public class PlayerMovementDuplicate : MonoBehaviour
 
             // Checking whether player hit at bottom
             if (colliders.Length > 0) {
-                if (colliders[0].gameObject.GetComponent<EnemyOpossum>())
-                {
-                    colliders[0].gameObject.GetComponent<EnemyOpossum>().Hit();
-                } else
-                {
-                    colliders[0].gameObject.GetComponent<EnemyEagle>().Hit();
-                }
-            
+                colliders[0].gameObject.GetComponent<Enemy>().Hit();
                 GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 0);
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, hitForce), ForceMode2D.Impulse);
             }
