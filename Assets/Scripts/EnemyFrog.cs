@@ -27,7 +27,7 @@ public class EnemyFrog : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        Invoke(nameof(WaitForJump), waitTime);
+        Invoke(nameof(CheckDirection), waitTime);
     }
 
     // Update is called once per frame
