@@ -89,8 +89,14 @@ public class Frog : Enemy
             direction = transform.position.x < playerCollider.transform.position.x ? 1 : -1;
         } else
         {
+            direction = direction == 1 ? -1 : 1;
             skipJump = true;
         }
         timeToJump = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

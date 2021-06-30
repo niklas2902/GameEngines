@@ -6,11 +6,16 @@ public class Enemy : MonoBehaviour
 {
     public bool hit = false;
     public bool destroyed = false;
+    private bool eagleComplex = false;
     private GameObject parent;
 
     private void Start()
     {
         parent = transform.parent.gameObject;
+        if (transform.parent.GetComponent<EagleComplex>() != null)
+        {
+            eagleComplex = true;
+        }
     }
 
     public void Hit()
@@ -40,7 +45,7 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (transform.parent.GetComponent<EagleComplex>())
+        if (eagleComplex)
         {
             transform.parent.GetComponent<EagleComplex>().CollisionDetected(collision);
         }
