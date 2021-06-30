@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   observeObject: {fileID: 7966677590682503441}
+  offset: 2
 --- !u!1 &1067819887
 GameObject:
   m_ObjectHideFlags: 0
@@ -2758,12 +2759,12 @@ PrefabInstance:
     - target: {fileID: 167950854387544024, guid: 3b03324e83d098a438b8f6ae3debdc4f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.77
       objectReference: {fileID: 0}
     - target: {fileID: 167950854387544024, guid: 3b03324e83d098a438b8f6ae3debdc4f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.13
       objectReference: {fileID: 0}
     - target: {fileID: 167950854387544024, guid: 3b03324e83d098a438b8f6ae3debdc4f,
         type: 3}
@@ -2813,7 +2814,7 @@ PrefabInstance:
     - target: {fileID: 167950854387544031, guid: 3b03324e83d098a438b8f6ae3debdc4f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b03324e83d098a438b8f6ae3debdc4f, type: 3}
@@ -2824,6 +2825,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3318729682226909961, guid: c6d201d7a948a444fa2f67e9f10b6c70,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3318729682226909963, guid: c6d201d7a948a444fa2f67e9f10b6c70,
         type: 3}
       propertyPath: m_RootOrder
@@ -2886,8 +2892,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3318729682226909965, guid: c6d201d7a948a444fa2f67e9f10b6c70,
         type: 3}
+      propertyPath: showGroundCheck
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318729682226909965, guid: c6d201d7a948a444fa2f67e9f10b6c70,
+        type: 3}
       propertyPath: groundMask.m_Bits
       value: 1079
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318729682226909966, guid: c6d201d7a948a444fa2f67e9f10b6c70,
+        type: 3}
+      propertyPath: showPlayerHitCollider
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318729683051046892, guid: c6d201d7a948a444fa2f67e9f10b6c70,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318120623013456025, guid: c6d201d7a948a444fa2f67e9f10b6c70,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6d201d7a948a444fa2f67e9f10b6c70, type: 3}
@@ -2908,6 +2934,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Frog
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014459723447324913, guid: 484eaa75ce56b784c8e0fdd70265bbc3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9014459723447324914, guid: 484eaa75ce56b784c8e0fdd70265bbc3,
         type: 3}

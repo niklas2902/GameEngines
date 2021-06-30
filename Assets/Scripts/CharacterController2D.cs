@@ -21,6 +21,8 @@ public class CharacterController2D : MonoBehaviour
 
     public UnityEvent OnLandEvent = new UnityEvent();
 
+    public bool showGroundCheck;
+
 
 
     // Start is called before the first frame update
@@ -63,7 +65,10 @@ public class CharacterController2D : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        if (showGroundCheck)
+        {
+            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
     }
 
     void Flip(float horizontalMove)
