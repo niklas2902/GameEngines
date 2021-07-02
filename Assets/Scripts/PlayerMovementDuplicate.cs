@@ -60,7 +60,7 @@ public class PlayerMovementDuplicate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.S) && !isDead)
+        if (Input.GetAxisRaw("Vertical") < 0 && !isDead)
         {
             if (!isClimbing)
             {
@@ -85,7 +85,7 @@ public class PlayerMovementDuplicate : MonoBehaviour
             isCrouching = false;
         }
 
-        if (Input.GetKey(KeyCode.W) && InLadderZone) {
+        if (Input.GetAxisRaw("Vertical") > 0 && InLadderZone) {
             animator.SetBool("IsClimbing", true);
             animator.SetBool("IsJumping", false);
             isClimbing = true;
@@ -93,7 +93,7 @@ public class PlayerMovementDuplicate : MonoBehaviour
         }
         else
         {
-            if (!Input.GetKey(KeyCode.S))
+            if (Input.GetAxisRaw("Vertical")==0)
             {
                 verticalMove = 0;
             }
@@ -136,7 +136,6 @@ public class PlayerMovementDuplicate : MonoBehaviour
             {
                 Hit();
             }
-
         }
     }
 

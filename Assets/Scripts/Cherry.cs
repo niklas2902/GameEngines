@@ -8,8 +8,14 @@ public class Cherry : Item
 
     public void OnDestroy()
     {
-        uiCancas.gameObject.SetActive(true);
-        player.GetComponent<PlayerMovementDuplicate>().Won = true;
+        if (uiCancas != null)
+        {
+            uiCancas.gameObject.SetActive(true);
+        }
+        if (player != null)
+        {
+            player.GetComponent<PlayerMovementDuplicate>().Won = true;
+        }
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         player.GetComponent<Animator>().SetFloat("Speed", 0);
     }
