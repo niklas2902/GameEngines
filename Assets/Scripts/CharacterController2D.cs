@@ -23,6 +23,9 @@ public class CharacterController2D : MonoBehaviour
 
     public bool showGroundCheck;
 
+    public float onGroundTheshold = 0.01f;
+    public bool Grounded { get => isGrounded; }
+
 
 
     // Start is called before the first frame update
@@ -36,11 +39,11 @@ public class CharacterController2D : MonoBehaviour
     {
         isGrounded = checkGrounded();
 
-        if(isGrounded && !wasGrounded)
+        if(isGrounded && !wasGrounded && rigidbody.velocity.y <=  onGroundTheshold)
         {
+            wasGrounded = true;
             OnLandEvent.Invoke();
         }
-        wasGrounded = isGrounded;
     }
 
     bool checkGrounded()
@@ -57,6 +60,7 @@ public class CharacterController2D : MonoBehaviour
 
         if(jump && isGrounded)
         {
+            wasGrounded = false;
             rigidbody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
         }
 
@@ -67,6 +71,7 @@ public class CharacterController2D : MonoBehaviour
     {
         if (showGroundCheck)
         {
+            Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
     }

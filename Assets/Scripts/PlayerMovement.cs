@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-        if (Input.GetButtonDown("Jump") && !isDead)
+        if (Input.GetButtonDown("Jump") && !isDead && controller.Grounded)
         {
             animator.SetBool("IsJumping", true);
             jump = true;
