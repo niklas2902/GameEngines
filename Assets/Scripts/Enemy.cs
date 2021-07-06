@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
 
     public void Hit()
     {
+        GetComponent<AudioSource>().Play();
         GetComponent<BoxCollider2D>().enabled = false;
 
         if (GetComponent<Rigidbody2D>())
@@ -29,7 +30,6 @@ public class Enemy : MonoBehaviour
         }
 
         hit = true;
-
         GetComponent<Animator>().SetBool("isDead", true);
         Invoke(nameof(Kill), GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
     }
