@@ -133,6 +133,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   showPlayerHitCollider: 0
+  jumpSound: {fileID: 8300000, guid: 2be6ce6d61e6e43c3a8b27bf6f7b62bc, type: 3}
+  deathSound: {fileID: 8300000, guid: 42c022ee5695a439cb9d9b2af5b0f723, type: 3}
 --- !u!114 &3318729682226909965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +216,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2be6ce6d61e6e43c3a8b27bf6f7b62bc, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

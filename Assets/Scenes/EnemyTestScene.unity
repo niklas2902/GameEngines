@@ -10254,6 +10254,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3318729682226909966, guid: c6d201d7a948a444fa2f67e9f10b6c70,
         type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3df59136337f44def8d005e65dd667be, type: 3}
+    - target: {fileID: 3318729682226909966, guid: c6d201d7a948a444fa2f67e9f10b6c70,
+        type: 3}
       propertyPath: showPlayerHitCollider
       value: 1
       objectReference: {fileID: 0}

@@ -51,10 +51,15 @@ public class PlayerMovementDuplicate : MonoBehaviour
 
     public bool Won { get; set; } = false;
 
+    public AudioClip jumpSound;
+    public AudioClip deathSound;
+    private AudioSource audio;
+
     private void Start()
     {
         controller = GetComponent<CharacterController2DDuplicate>();
         animator = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -109,6 +114,7 @@ public class PlayerMovementDuplicate : MonoBehaviour
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
             if (Input.GetButtonDown("Jump") && !isDead)
             {
+                audio.PlayOneShot(jumpSound);
                 animator.SetBool("IsJumping", true);
                 jump = true;
             }
@@ -182,7 +188,8 @@ public class PlayerMovementDuplicate : MonoBehaviour
         GetComponent<CapsuleCollider2D>().enabled = false;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         animator.SetBool("Hit", true);
-        Invoke("ReloadLevel", reloadTime);
+        audio.PlayOneShot(deathSound);
+        Invoke("ReloadLevel", deathSound.length);
     }
 
     public void ReloadLevel() {

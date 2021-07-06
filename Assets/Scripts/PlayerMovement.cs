@@ -29,10 +29,15 @@ public class PlayerMovement : MonoBehaviour
 
     public bool showPlayerHitCollider;
 
+    public AudioClip jumpSound;
+    public AudioClip deathSound;
+    private AudioSource audio;
+
     private void Start()
     {
         controller = GetComponent<CharacterController2D>();
         animator = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         if (Input.GetButtonDown("Jump") && !isDead && controller.Grounded)
         {
+            audio.PlayOneShot(jumpSound);
             animator.SetBool("IsJumping", true);
             jump = true;
         }
@@ -95,7 +101,8 @@ public class PlayerMovement : MonoBehaviour
         GetComponent<CapsuleCollider2D>().enabled = false;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         animator.SetBool("Hit", true);
-        Invoke("ReloadLevel", reloadTime);
+        audio.PlayOneShot(deathSound);
+        Invoke("ReloadLevel", deathSound.length);
     }
 
     public void ReloadLevel() {
