@@ -62,6 +62,7 @@ public class CharacterController2D : MonoBehaviour
         {
             wasGrounded = false;
             rigidbody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+            GetComponent<AudioSource>().Play();
         }
 
         Flip(horizontalMove);   

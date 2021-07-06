@@ -66,6 +66,7 @@ public class CharacterController2DDuplicate : MonoBehaviour
         if(jump && isGrounded)
         {
             rigidbody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+            GetComponent<AudioSource>().Play();
         }
 
         if (!isClimbing)
