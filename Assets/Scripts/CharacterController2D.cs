@@ -14,7 +14,7 @@ public class CharacterController2D : MonoBehaviour
 
     private Vector2 velocity = Vector2.zero;
 
-    private bool wasGrounded = false;
+    private bool hasJumped = false;
     private bool isGrounded = false;
 
     public LayerMask groundMask;
@@ -23,8 +23,9 @@ public class CharacterController2D : MonoBehaviour
 
     public bool showGroundCheck;
 
-    public float onGroundTheshold = 0.01f;
+    public float onGroundThreshold = 0.01f;
     public bool Grounded { get => isGrounded; }
+    private bool wasGrounded;
 
 
 
@@ -39,11 +40,14 @@ public class CharacterController2D : MonoBehaviour
     {
         isGrounded = checkGrounded();
 
-        if(isGrounded && !wasGrounded && rigidbody.velocity.y <=  onGroundTheshold)
+        //Checking for threshold, because, player shouldn't trigger checkGrounded, when colliding with obstacle while moving upwards
+        if(isGrounded && !hasJumped && rigidbody.velocity.y <=  onGroundThreshold && wasGrounded)
         {
-            wasGrounded = true;
+            hasJumped = true;
             OnLandEvent.Invoke();
         }
+
+        wasGrounded = isGrounded;
     }
 
     bool checkGrounded()
@@ -60,7 +64,7 @@ public class CharacterController2D : MonoBehaviour
 
         if(jump && isGrounded)
         {
-            wasGrounded = false;
+            hasJumped = false;
             rigidbody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
         }
 

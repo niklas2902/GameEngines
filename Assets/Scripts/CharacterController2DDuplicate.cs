@@ -14,14 +14,18 @@ public class CharacterController2DDuplicate : MonoBehaviour
 
     private Vector2 velocity = Vector2.zero;
 
-    private bool wasGrounded = false;
+    private bool playerJumped = false;
     private bool isGrounded = false;
 
     public LayerMask groundMask;
 
     public UnityEvent OnLandEvent = new UnityEvent();
 
-    private float startGravityScale;
+    private float startGravityScale; // remove gravity, when player climbs on ladder
+    public float onGroundThreshold = 0.01f;
+
+    private bool wasGrounded;
+    public bool Grounded { get => isGrounded; }
 
 
 
@@ -37,8 +41,9 @@ public class CharacterController2DDuplicate : MonoBehaviour
     {
         isGrounded = checkGrounded();
 
-        if(isGrounded && !wasGrounded)
+        if(isGrounded && playerJumped && rigidbody.velocity.y <= onGroundThreshold && !wasGrounded)
         {
+            playerJumped = false;
             OnLandEvent.Invoke();
         }
         wasGrounded = isGrounded;
@@ -65,6 +70,7 @@ public class CharacterController2DDuplicate : MonoBehaviour
 
         if(jump && isGrounded)
         {
+            playerJumped = true;
             rigidbody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
             GetComponent<AudioSource>().Play();
         }
