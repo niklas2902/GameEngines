@@ -178,6 +178,7 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 256
+  jumpSound: {fileID: 8300000, guid: 9f110f013401f42e996da5094d6f8b8b, type: 3}
 --- !u!82 &5792298121861700953
 AudioSource:
   m_ObjectHideFlags: 0

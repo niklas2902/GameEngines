@@ -22,10 +22,14 @@ public class Frog : Enemy
     private bool timeToJump = false;
     private bool skipJump = false;
 
+    public AudioClip jumpSound;
+    private AudioSource audio;
+
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        audio = GetComponent<AudioSource>();
         Invoke(nameof(CheckDirection), waitTime);
     }
 
@@ -73,6 +77,7 @@ public class Frog : Enemy
         timeToJump = false;
         if (!skipJump)
         {
+            audio.PlayOneShot(jumpSound);
             rb.AddForce(new Vector2(direction * jumpSpeed / 2, jumpSpeed), ForceMode2D.Impulse);
             anim.SetBool("isJumping", true);
             jump = true;
