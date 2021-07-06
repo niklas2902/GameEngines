@@ -195,4 +195,9 @@ public class PlayerMovementDuplicate : MonoBehaviour
     public void ReloadLevel() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audio.PlayOneShot(clip);
+    }
 }
