@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovementDuplicate : MonoBehaviour
 {
-    float horizontalMove = 0f;
+    private float horizontalMove = 0f;
+    private float verticalMove;
 
     public float runSpeed = 40f;
     public float climbSpeed = 10f;
@@ -38,8 +39,6 @@ public class PlayerMovementDuplicate : MonoBehaviour
 
     public bool isCrouching;
 
-    public float verticalMove;
-
     private bool isClimbing = false;
 
     private bool inLadderZone;
@@ -65,9 +64,10 @@ public class PlayerMovementDuplicate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxisRaw("Vertical") < 0 && !isDead)
+        verticalMove = Input.GetAxisRaw("Vertical") * climbSpeed;
+        if (verticalMove < 0 && !isDead)
         {
-            if (!isClimbing)
+            if (!isClimbing) // As we are using the same keys for crouching and climbing down, we have to distinguish the current situation
             {
                 animator.SetBool("IsCrouching", true);
                 animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -82,7 +82,7 @@ public class PlayerMovementDuplicate : MonoBehaviour
             }
         }
 
-        else if (!isDead && !Won)
+        else if (!isDead && !Won) // Resetting the crouching
         {
             animator.SetBool("IsCrouching", false);
             colliderCrouch.enabled = false;
@@ -90,29 +90,25 @@ public class PlayerMovementDuplicate : MonoBehaviour
             isCrouching = false;
         }
 
-        if (Input.GetAxisRaw("Vertical") > 0 && InLadderZone) {
-            animator.SetBool("IsClimbing", true);
-            animator.SetBool("IsJumping", false);
-            isClimbing = true;
-            verticalMove = climbSpeed;
-        }
-        else
+        if (inLadderZone)
         {
-            if (Input.GetAxisRaw("Vertical")==0)
+            animator.SetFloat("ClimbSpeed", Mathf.Abs(verticalMove));
+            if(verticalMove != 0)
             {
-                verticalMove = 0;
+                animator.SetBool("IsJumping", false);
+                isClimbing = true;
             }
-            if (!isClimbing)
-            {
-                animator.SetBool("IsClimbing", false);
-            }
+        }
+        else {
+            isClimbing = false;
+            animator.SetFloat("ClimbSpeed", -1); 
         }
 
         if (!isCrouching)
-        {
+        { // Normal move to on the horizontal and handling jumping
             horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-            if (Input.GetButtonDown("Jump") && !isDead && controller.Grounded)
+            if (Input.GetButtonDown("Jump") && !isDead && controller.Grounded && !isClimbing) // player shouldn't be able to jump, when on ladder
             {
                 audio.PlayOneShot(jumpSound);
                 animator.SetBool("IsJumping", true);
