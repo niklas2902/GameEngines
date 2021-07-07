@@ -68,9 +68,9 @@ public class PlayerMovementComplex : MonoBehaviour
 
         if (inLadderZone) // Use Ladder on Vertical move if player in range
         {
-            animator.SetBool("isClimbing", true);
             if(verticalMove != 0)
             {
+                animator.SetBool("isClimbing", true);
                 animator.SetBool("IsJumping", false);
                 isClimbing = true;
             }
