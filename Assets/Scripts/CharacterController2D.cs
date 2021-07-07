@@ -57,10 +57,13 @@ public class CharacterController2D : MonoBehaviour
 
     public void Move(float horizontalMove, bool jump)
     {
+        //From:https://github.com/Brackeys/2D-Character-Controller/blob/master/CharacterController2D.cs
         // Move the character by finding the target velocity
         Vector3 targetVelocity = new Vector2(horizontalMove * 10f, rigidbody.velocity.y);
         // And then smoothing it out and applying it to the character
         rigidbody.velocity = Vector2.SmoothDamp(rigidbody.velocity, targetVelocity, ref velocity, movementSmoothing);
+
+
 
         if(jump && isGrounded)
         {

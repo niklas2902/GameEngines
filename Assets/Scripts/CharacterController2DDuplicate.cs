@@ -56,8 +56,6 @@ public class CharacterController2DDuplicate : MonoBehaviour
 
     public void Move(float horizontalMove, float verticalMove, bool jump, bool isClimbing)
     {
-        // Move the character by finding the target velocity
-        Vector3 targetVelocity = new Vector2(horizontalMove * 10f, !isClimbing?rigidbody.velocity.y:verticalMove * 10f);
         if (isClimbing) {
             rigidbody.gravityScale = 0;
         }
@@ -65,8 +63,14 @@ public class CharacterController2DDuplicate : MonoBehaviour
         {
             rigidbody.gravityScale = startGravityScale;
         }
+
+        //From:https://github.com/Brackeys/2D-Character-Controller/blob/master/CharacterController2D.cs
+        // Move the character by finding the target velocity
+        Vector3 targetVelocity = new Vector2(horizontalMove * 10f, !isClimbing ? rigidbody.velocity.y : verticalMove * 10f);
         // And then smoothing it out and applying it to the character
         rigidbody.velocity = Vector2.SmoothDamp(rigidbody.velocity, targetVelocity, ref velocity, movementSmoothing);
+
+
 
         if(jump && isGrounded)
         {
