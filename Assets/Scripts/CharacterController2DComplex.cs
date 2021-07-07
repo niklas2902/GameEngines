@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class CharacterController2DDuplicate : MonoBehaviour
+public class CharacterController2DComplex : MonoBehaviour
 {
     private Rigidbody2D rigidbody;
     public Transform groundCheck;

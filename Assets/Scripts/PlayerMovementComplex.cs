@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerMovementDuplicate : MonoBehaviour
+public class PlayerMovementComplex : MonoBehaviour
 {
     private float horizontalMove = 0f;
     private float verticalMove;
@@ -9,7 +9,7 @@ public class PlayerMovementDuplicate : MonoBehaviour
     public float runSpeed = 40f;
     public float climbSpeed = 10f;
 
-    private CharacterController2DDuplicate controller;
+    private CharacterController2DComplex controller;
 
     public Transform ladderCollider;
 
@@ -56,7 +56,7 @@ public class PlayerMovementDuplicate : MonoBehaviour
 
     private void Start()
     {
-        controller = GetComponent<CharacterController2DDuplicate>();
+        controller = GetComponent<CharacterController2DComplex>();
         animator = GetComponent<Animator>();
         audio = GetComponent<AudioSource>();
     }
@@ -65,6 +65,21 @@ public class PlayerMovementDuplicate : MonoBehaviour
     void Update()
     {
         verticalMove = Input.GetAxisRaw("Vertical") * climbSpeed;
+
+        if (inLadderZone) // Use Ladder on Vertical move if player in range
+        {
+            animator.SetBool("isClimbing", true);
+            if(verticalMove != 0)
+            {
+                animator.SetBool("IsJumping", false);
+                isClimbing = true;
+            }
+        }
+        else {
+            isClimbing = false;
+            animator.SetBool("isClimbing", false); 
+        }
+
         if (verticalMove < 0 && !isDead)
         {
             if (!isClimbing) // As we are using the same keys for crouching and climbing down, we have to distinguish the current situation
@@ -88,20 +103,6 @@ public class PlayerMovementDuplicate : MonoBehaviour
             colliderCrouch.enabled = false;
             colliderNomal.enabled = true;
             isCrouching = false;
-        }
-
-        if (inLadderZone)
-        {
-            animator.SetBool("isClimbing", true);
-            if(verticalMove != 0)
-            {
-                animator.SetBool("IsJumping", false);
-                isClimbing = true;
-            }
-        }
-        else {
-            isClimbing = false;
-            animator.SetBool("isClimbing", false); 
         }
 
         if (!isCrouching)

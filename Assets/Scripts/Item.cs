@@ -19,7 +19,7 @@ public class Item : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         animator.SetTrigger("Activate");
-        collision.GetComponent<PlayerMovementDuplicate>().PlaySound(sound);
+        collision.GetComponent<PlayerMovementComplex>().PlaySound(sound);
     }
 
     private void Remove()
