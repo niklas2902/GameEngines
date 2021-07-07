@@ -92,7 +92,7 @@ public class PlayerMovementDuplicate : MonoBehaviour
 
         if (inLadderZone)
         {
-            animator.SetFloat("ClimbSpeed", Mathf.Abs(verticalMove));
+            animator.SetBool("isClimbing", verticalMove != 0);
             if(verticalMove != 0)
             {
                 animator.SetBool("IsJumping", false);
@@ -101,7 +101,7 @@ public class PlayerMovementDuplicate : MonoBehaviour
         }
         else {
             isClimbing = false;
-            animator.SetFloat("ClimbSpeed", -1); 
+            animator.SetBool("isClimbing", false); 
         }
 
         if (!isCrouching)
