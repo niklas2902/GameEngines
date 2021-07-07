@@ -1,12 +1,13 @@
-﻿2D Entwicklung mit Unity
-Niklas Zimmer
-Lucas Engelbrecht
+﻿2D-Entwicklung mit Unity
+Lucas Engelbrecht (202956)
+Niklas Zimmer (202397)
 
 Start:
-Starten lässt sich das Projekt über die EnemyTestScene.
+Starten lässt sich das Projekt in Unity über die EnemyTestScene unter Assets/Scenes.
 
 Besondere Leistungen, Herausforderungen und gesammelte Erfahrungen:
-Nach der Einarbeitung, waren vor allem das Verhalten des Spielers und der Gegner eine Herausforderung. Während unseres Projekts haben wir versucht, die Bewegung des Spielers, 
+Nach der Einarbeitung in das Thema der 2D-Entwicklung, waren vor allem das Verhalten des Spielers und der Gegner eine Herausforderung. 
+Während unseres Projekts haben wir versucht, die Bewegung des Spielers, 
 sowie der Gegner möglichst fehlerfrei umzusetzen und Animationen genutzt, um das Spiel lebhafter zu machen.
 Auch haben wir versucht, viel Zeit darauf zu verwenden, ansprechende Tilemaps für die Szenen zu erstellen, die auch einigermaßen schön aussehen.
 Eine weitere interessante Erfahrung war das Arbeiten mit den 2D-Lichtern von Unity. Hier konnten wir in der CaveScene mit den verschiedenen Lichttypen herumexperimentieren
@@ -20,6 +21,8 @@ Verwendete Assets:
 
 Externe Grafiken:
 - Sprite Cookie:https://github.com/Unity-Technologies/2d-renderer-samples/blob/master/Assets/Samples/2D%20Renderer/Common/Sprites/Sprite%20Cookie.png
+- GlowRocks A:https://github.com/Unity-Technologies/2d-renderer-samples/blob/master/Assets/Samples/2D%20Renderer/Common/Sprites/GlowRocks%20A.png
+- Rock_Normal:https://github.com/Brackeys/2D-Lights/blob/master/2D%20Lights/Assets/Sprites/Space/Rock_Normal.png
 
 
 Inspiration:
