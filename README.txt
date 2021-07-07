@@ -6,9 +6,9 @@ Start:
 Starten lässt sich das Projekt über die EnemyTestScene.
 
 Besondere Leistungen, Herausforderungen und gesammelte Erfahrungen:
-Nach der Einarbeitung, waren vor allem das Verhalten des Spielers und der Gegner eine Herausforderung. Während unserem Projekt haben wir versucht, die Bewegung des Spielers, 
+Nach der Einarbeitung, waren vor allem das Verhalten des Spielers und der Gegner eine Herausforderung. Während unseres Projekts haben wir versucht, die Bewegung des Spielers, 
 sowie der Gegner möglichst fehlerfrei umzusetzen und Animationen genutzt, um das Spiel lebhafter zu machen.
-Auch haben wir versucht, viel Zeit darauf zu verwenden, ansprechende Tilemaps für die Szenen zu erstellen
+Auch haben wir versucht, viel Zeit darauf zu verwenden, ansprechende Tilemaps für die Szenen zu erstellen, die auch einigermaßen schön aussehen.
 Eine weitere interessante Erfahrung war das Arbeiten mit den 2D-Lichtern von Unity. Hier konnten wir in der CaveScene mit den verschiedenen Lichttypen herumexperimentieren
 und haben auch Erfahrungen im Erstellen von Animationen für ebendiese gemacht.
 
