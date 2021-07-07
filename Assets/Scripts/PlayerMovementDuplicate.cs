@@ -92,7 +92,7 @@ public class PlayerMovementDuplicate : MonoBehaviour
 
         if (inLadderZone)
         {
-            animator.SetBool("isClimbing", verticalMove != 0);
+            animator.SetBool("isClimbing", true);
             if(verticalMove != 0)
             {
                 animator.SetBool("IsJumping", false);
@@ -170,6 +170,7 @@ public class PlayerMovementDuplicate : MonoBehaviour
 
     bool CheckLadder()
     {
+        //Function for player not to move above ladder
         return Physics2D.OverlapCircleAll(ladderCollider.position, 0.5f, ladderMask).Length != 0;
     }
 
