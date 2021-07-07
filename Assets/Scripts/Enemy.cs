@@ -51,4 +51,16 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void Flip(Vector2 movement)
+    {
+        if (movement.x > 0)
+        {
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+        else if (movement.x < 0)
+        {
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+    }
+
 }

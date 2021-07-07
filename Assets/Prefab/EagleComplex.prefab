@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 601498279289638850}
   - component: {fileID: 8893893377047272275}
   m_Layer: 9
-  m_Name: EagleGFX
+  m_Name: EagleSprite
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,4 +372,4 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 2.5
   nextWaypointDistance: 1
-  enemyGX: {fileID: 7422011539969638063}
+  enemySprite: {fileID: 7422011539969638063}

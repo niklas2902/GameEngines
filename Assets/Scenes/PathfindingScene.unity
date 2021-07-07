@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4886,7 +4886,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2102643069
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8e160a2a620644cd6afef9119dad1093, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4969,7 +4969,7 @@ PrefabInstance:
     - target: {fileID: 7422011539969638063, guid: 4523d6ea2f7563e48afee9a143c00b7c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7422011539969638063, guid: 4523d6ea2f7563e48afee9a143c00b7c,
         type: 3}
@@ -5131,7 +5131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIex9RdJuVQIAAPoEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMziVjk5CG3lqHkB4SMqGdXHwR0hprkCWPPsLX8N+7km3s0ukJsft29d7blU9EKFsDc9osjOAvmgP5NiLhTL6M+uQz7OlGq5U4Qof5ENyVAUQj5p06oTGehjKrK3BGsO9qIwM4waBXotCmmvMNZNo6i+GCSguYMtqFaoWh04js8Wc8CyUHPE2+htMRT7NkdMYjA+XADKDJzbTF3rXIBugVk7SqgQfWPX5y26LThwhTqKdFBO5MSylsS4a4Qx3FZrS2HqUggAuK4iKD9Cb0KkFsShc6D8uXRWHBtdoNPTwKgy41fckP3VhXUbttmH1S6SOFZHIXaTVdX/4BjNOYLoyunruL0yRc4krBtu/0wKh1A3OH4ccB9+jQjsotXUv4KEG96oXRXnFMOuNDqbcweez/XrRlJbBtH2+oXgV93VvezbKbZNBwjvL3mRTVOqRu7prASupoeVwAMDicn0g4rodtW2A0sPht4RfdDPeoTTwJYx2mWpUq0FtrbwKUzKNnQY13mTYKzLBDDYpKd3jDPu56iFe5/1c90fBk2tvbXPcSrkpiuMcnyVXqTe8u07Kl3r2ALZfeSaGgtzokXtGoTCvV7NhQUle28qagbFC28YL/vVvkFmhyn06mrOC3D9OH2biA6X3B6Ho6Ac5pyklcPqFQJ5VvDdHWHhyb6psrXLTuSzJaGFrHfeeG7hbiWOkhQaEKvWIGQC2bFhfmYPAWfJp8zgU6tALnhIoTJ6ecSM22wPPLnXmUOt87Q/O+S05q8aldiOQki9+OnJzJ+Q9QSwMEFAAACAgAAAgh7I5TyC5tAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTVUVBKL0osyCgGihiCOKWZKSB2tJJxaqKBmaGRaXJairGFqYWlblqqqVlacmKSqVFqSkqiYYpSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7H1F0m5VAgAA+gQAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7I5TyC5tAAAAeAAAAAkAJAAAAAAAAAAAAAAAogIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABaAwAAAAA=
+    dataString: UEsDBBQAAAgIAAAIIewqf+TtVQIAAPoEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMziVjk5CG3lqHkB4SMqGdXHwR0hprkCWPPsLX8N+7km3s0ukJsft29d7blU9EKFsDc9osjOAvmgP5NiLhTL6M+uQz7OlGq5U4Qof5ENyVAUQj5p06oTGehjKrK3BGsO9qIwM4waBXotCmmvMNZNo6i+GCSguYMtqFaoWh04js8Wc8CyUHPE2+htMRT7NkdMYjA+XADKDJzbTF3rXIBugVk7SqgQfWPX5y26LThwhTqKdFBO5MSylsS4a4Qx3FZrS2HqUggAuK4iKD9CZUlCA2pQudh+XLorDgWu2GHh6FQZeavuSHbqyrqN02zD6p9JFCMrmLtJquL/8AxmlMF0ZXz93FaRIucaVg23d6YNS6gbnD8OOAe3RoR+WWriV8lKBe9cJorzgmnfGh1FuYPPZ/L9qyEti2jzdUr4K+7i3vZtlNMmg4R/n7TIpqHVI3d01gJXW0PC4AGBzOTyQc18O2LTAaWPy28ItuhnvUJp6EsQ5TrUoV6K21NwFK5tGzoMa7TBsFZtihBkWlO7xhH3c9xKvc/6ueaHgy7e1trnsJVyUx3OOT5Cr1pneXadlS717AlkvvpFDQWx0Sr2hUppVqdmwoqStbeVNQNijbeMH/3i1yCzS5TydTVvDbh+nDbFzA9L5gdD2dAOc05SQun1Cok8q3hmhrD45N9c0VLlr3JRktDK3jvnNDdwtxrPSQoFCFXjEDoJZNiwtzMHgLPk0+5wIdWoFzQsWJk1NOpGZb4PnlzjxKne+doXnfJSe1+NQuRHKSxW9HTs7k/AdQSwMEFAAACAgAAAgh7I5TyC5tAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTVUVBKL0osyCgGihiCOKWZKSB2tJJxaqKBmaGRaXJairGFqYWlblqqqVlacmKSqVFqSkqiYYpSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7Cp/5O1VAgAA+gQAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7I5TyC5tAAAAeAAAAAkAJAAAAAAAAAAAAAAAogIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABaAwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -6211,6 +6211,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Offset.y
       value: -0.36686134
+      objectReference: {fileID: 0}
+    - target: {fileID: 7422011539969638060, guid: 02ff887be0f10bd4398c545d9074ac85,
+        type: 3}
+      propertyPath: m_Name
+      value: EagleSprite
       objectReference: {fileID: 0}
     - target: {fileID: 7422011541728419112, guid: 02ff887be0f10bd4398c545d9074ac85,
         type: 3}

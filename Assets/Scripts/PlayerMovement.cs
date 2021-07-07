@@ -108,6 +108,11 @@ public class PlayerMovement : MonoBehaviour
     public void ReloadLevel() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public bool playerIsDead()
+    {
+        return isDead;
+    }
 }
 
 public enum Direction

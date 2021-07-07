@@ -21,13 +21,7 @@ public class Opossum : Enemy
         }
 
         Vector3 movement = new Vector3(direction, 0f, 0f);
-        if(movement.x > 0)
-        {
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
-        } else if(movement.x < 0)
-        {
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
+        Flip(movement);
         transform.position += movement * Time.deltaTime * moveSpeed;
     }
 

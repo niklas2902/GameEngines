@@ -198,4 +198,9 @@ public class PlayerMovementComplex : MonoBehaviour
     {
         audio.PlayOneShot(clip);
     }
+
+    public bool playerIsDead()
+    {
+        return isDead;
+    }
 }

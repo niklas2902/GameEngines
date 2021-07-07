@@ -1,15 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Frog : Enemy
 {
-    private Animator anim;
-    private Rigidbody2D rb;
-    public float jumpSpeed = 35;
-    public float waitTime = 5;
-    public float radius = 10;
+    public float jumpSpeed = 35f;
+    public float waitTime = 5f;
+    public float radius = 10f;
+
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask groundMask;
@@ -25,12 +23,16 @@ public class Frog : Enemy
     public AudioClip jumpSound;
     private AudioSource audio;
 
+    private Animator anim;
+    private Rigidbody2D rb;
+
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
-        Invoke(nameof(CheckDirection), waitTime);
+
+        InvokeRepeating(nameof(CheckDirection), 0f, waitTime);
     }
 
     private void FixedUpdate()
@@ -40,8 +42,8 @@ public class Frog : Enemy
         if (isGrounded && !wasGrounded)
         {
             anim.SetBool("isJumping", false);
-            jump = false;
             anim.SetBool("jumpDown", false);
+            jump = false;
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
         wasGrounded = isGrounded;
@@ -83,15 +85,15 @@ public class Frog : Enemy
             jump = true;
         }
         skipJump = false;
-        Invoke(nameof(CheckDirection), waitTime);
     }
 
     void CheckDirection()
     {
-        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, radius, playerMask);
-        if(playerCollider != null)
+        Collider2D target = Physics2D.OverlapCircle(transform.position, radius, playerMask);
+
+        if (target != null)
         {
-            direction = transform.position.x < playerCollider.transform.position.x ? 1 : -1;
+            direction = transform.position.x < target.transform.position.x ? 1 : -1;
         } else
         {
             direction = direction == 1 ? -1 : 1;

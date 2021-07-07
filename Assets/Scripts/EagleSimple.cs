@@ -5,7 +5,12 @@ using Pathfinding;
 
 public class EagleSimple : Enemy
 {
-    public AIPath aiPath;
+    private AIPath aiPath;
+
+    void Start()
+    {
+        aiPath = gameObject.GetComponentInParent<AIPath>();
+    }
 
     void FixedUpdate()
     {
@@ -17,13 +22,6 @@ public class EagleSimple : Enemy
             return;
         }
 
-        if(aiPath.desiredVelocity.x >= 0.01f)
-        {
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
-        } 
-        else if (aiPath.desiredVelocity.x <= 0.01f)
-        {
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
+        Flip(aiPath.velocity);
     }
 }

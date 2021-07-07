@@ -6,45 +6,46 @@ using Pathfinding;
 public class EagleComplex : MonoBehaviour
 {
     public Transform target;
-    public float speed = 2f;
-    public float nextWaypointDistance = 1f;
-    public Transform enemyGX;
-    Path path;
-    int currentWaypoint = 0;
-    Seeker seeker;
-    private Animator anim;
-    private float xPosOffset;
-    private Vector3 initPos;
-    private bool inInitPos;
-    private bool reachedEndOfPath;
-    private bool backPath;
-    private Vector2 direction;
-    private GridGraph grid;
-    private Direction collisionHit;
+    public Transform enemySprite;
+    public float speed = 2.5f;
+    public float waypointDistance = 1f;
+    public float repathRate = 0.5f;
 
+    private Seeker seeker;
+    private Animator anim;
+    private GridGraph grid;
+
+    private Path path;
+    private int currentWaypoint = 0;
+    private bool endOfPath;
+    
+    private Vector3 initPos;
+    private bool inInitMovement = true;
+    private bool backPath = false;
+
+    private Vector2 direction;
+    private Direction collisionHit = Direction.None;
+    
     void Start()
     {
         seeker = GetComponent<Seeker>();
-        anim = enemyGX.GetComponent<Animator>();
-        xPosOffset = enemyGX.localPosition.x;
-        initPos = transform.position;
-        inInitPos = true;
-        backPath = false;
-        direction = new Vector2(-1, 0);
+        anim = enemySprite.GetComponent<Animator>();
         grid = (GridGraph)AstarPath.active.data.graphs[0];
-        collisionHit = Direction.None;
 
-        InvokeRepeating(nameof(UpdatePath), 0f, 0.5f);
+        initPos = transform.position;
+        direction = new Vector2(-1, 0);
+
+        InvokeRepeating(nameof(UpdatePath), 0f, repathRate);
     }
 
     void FixedUpdate()
     {
-        if (enemyGX.GetComponent<Enemy>().hit)
+        if (enemySprite.GetComponent<Enemy>().hit)
         {
             speed = 0;
             GetComponent<CircleCollider2D>().enabled = false;
             GetComponent<Seeker>().enabled = false;
-            if (enemyGX.GetComponent<Enemy>().destroyed)
+            if (enemySprite.GetComponent<Enemy>().destroyed)
             {
                 Destroy(gameObject);
             }
@@ -67,29 +68,22 @@ public class EagleComplex : MonoBehaviour
         }
         else
         {
-            if (currentWaypoint >= path.vectorPath.Count)
-            {
-                reachedEndOfPath = true;
-            }
-            else
-            {
-                reachedEndOfPath = false;
-            }
+            endOfPath = currentWaypoint >= path.vectorPath.Count ? true : false;
 
-            if (!reachedEndOfPath)
+            if (!endOfPath)
             {
-                direction = ((Vector2)path.vectorPath[currentWaypoint] - new Vector2(transform.position.x, transform.position.y)).normalized;
+                direction = ((Vector2) path.vectorPath[currentWaypoint] - new Vector2(transform.position.x, transform.position.y)).normalized;
                 transform.Translate(direction * speed * Time.deltaTime);
 
                 float distance = Vector2.Distance(new Vector2(transform.position.x, transform.position.y), path.vectorPath[currentWaypoint]);
 
-                if (distance < nextWaypointDistance)
+                if (distance < waypointDistance)
                 {
                     currentWaypoint++;
                 }
             }
 
-            if (reachedEndOfPath && backPath)
+            if (endOfPath && backPath)
             {
                 if(direction.y > 0 && transform.position.y < initPos.y || direction.y < 0 && transform.position.y > initPos.y)
                 {
@@ -97,7 +91,7 @@ public class EagleComplex : MonoBehaviour
                 }
                 else
                 {
-                    inInitPos = true;
+                    inInitMovement = true;
                     backPath = false;
                     path = null;
                     direction = new Vector2(-1, 0);
@@ -105,20 +99,31 @@ public class EagleComplex : MonoBehaviour
             }
         }
 
-
-        if (direction.x > 0)
-        {
-            enemyGX.localScale = new Vector3(-1f, 1f, 1f);
-            enemyGX.localPosition = new Vector3(-xPosOffset, enemyGX.localPosition.y, enemyGX.localPosition.z);
-        }
-        else if (direction.x < 0)
-        {
-            enemyGX.localScale = new Vector3(1f, 1f, 1f);
-            enemyGX.localPosition = new Vector3(xPosOffset, enemyGX.localPosition.y, enemyGX.localPosition.z);
-        }
+        enemySprite.GetComponent<Enemy>().Flip(direction);
 
     }
 
+    void UpdatePath()
+    {
+        bool playerIsDead = target.GetComponent<PlayerMovementComplex>() ? target.GetComponent<PlayerMovementComplex>().playerIsDead() : target.GetComponent<PlayerMovement>().playerIsDead();
+
+        if (seeker.IsDone() && !playerIsDead)
+        {
+            if (target.position.x < grid.center.x - 0.5f * grid.width || target.position.x > grid.center.x + 0.5f * grid.width) 
+            {
+                if (!inInitMovement)
+                {
+                    seeker.StartPath(new Vector2(transform.position.x, transform.position.y), new Vector2(initPos.x, initPos.y), OnBackPathComplete);
+                }
+            }
+            else
+            {
+                inInitMovement = false;
+                seeker.StartPath(new Vector2(transform.position.x, transform.position.y), target.position, OnPathComplete);
+            }
+        }
+
+    }
     void OnPathComplete(Path p)
     {
         if (!p.error)
@@ -129,7 +134,7 @@ public class EagleComplex : MonoBehaviour
         }
     }
 
-    void OnPathCompleteBack(Path p)
+    void OnBackPathComplete(Path p)
     {
         if (!p.error)
         {
@@ -139,30 +144,9 @@ public class EagleComplex : MonoBehaviour
         }
     }
 
-    void UpdatePath()
-    {
-        if (seeker.IsDone())
-        {
-            if (target.position.x < grid.center.x - 0.5f * grid.width || target.position.x > grid.center.x + 0.5f * grid.width)
-            {
-                if (!inInitPos)
-                {
-                    seeker.StartPath(new Vector2(transform.position.x, transform.position.y), new Vector2(initPos.x, initPos.y), OnPathCompleteBack);
-                }
-
-            }
-            else
-            {
-                inInitPos = false;
-                seeker.StartPath(new Vector2(transform.position.x, transform.position.y), target.position, OnPathComplete);
-            }
-        }
-
-    }
-
     public void CollisionDetected(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground" && inInitPos)
+        if (collision.gameObject.tag == "Ground" && inInitMovement)
         {
             if (direction.x < 0)
             {
