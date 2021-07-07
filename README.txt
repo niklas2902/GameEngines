@@ -1,4 +1,18 @@
-﻿Verwendete Assets:
+﻿2D Entwicklung mit Unity
+Niklas Zimmer
+Lucas Engelbrecht
+
+Start:
+Starten lässt sich das Projekt über die EnemyTestScene.
+
+Besondere Leistungen, Herausforderungen und gesammelte Erfahrungen:
+Nach der Einarbeitung, waren vor allem das Verhalten des Spielers und der Gegner eine Herausforderung. Während unserem Projekt haben wir versucht, die Bewegung des Spielers, 
+sowie der Gegner möglichst fehlerfrei umzusetzen und Animationen genutzt, um das Spiel lebhafter zu machen.
+Auch haben wir versucht, viel Zeit darauf zu verwenden, ansprechende Tilemaps für die Szenen zu erstellen
+Eine weitere interessante Erfahrung war das Arbeiten mit den 2D-Lichtern von Unity. Hier konnten wir in der CaveScene mit den verschiedenen Lichttypen herumexperimentieren
+und haben auch Erfahrungen im Erstellen von Animationen für ebendiese gemacht.
+
+Verwendete Assets:
 - Sunny Land (Sprites): https://assetstore.unity.com/packages/2d/characters/sunny-land-103349
 - Warped Caves (Sprites): https://assetstore.unity.com/packages/2d/characters/warped-caves-103250
 - Audio Sound FX (Sounds): https://assetstore.unity.com/packages/audio/sound-fx/8-bit-sfx-32831
