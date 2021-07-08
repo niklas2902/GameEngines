@@ -43,4 +43,3 @@ Inspiration:
 
 
 Demo-Video: https://www.youtube.com/watch?v=zgjH1jqzj5Y
-Projekt: 
