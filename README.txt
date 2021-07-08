@@ -11,7 +11,7 @@ Nach der Einarbeitung in das Thema der 2D-Entwicklung, waren vor allem das Verha
 Bei dem Opossum als Gegner war die Bewegung noch sehr simpel, wohingegen wir vor einer Herausforderung standen, als wir einen Vogel als Gegner umsetzen wollten.
 Das führte uns schließlich zum Thema Pathfinding, was sehr umfachreich hätte werden können, wenn wir den ganzen Algorithmus von Grund auf implementiert hätten.
 Womöglich hätten wir es im Nachhinein auch als einziges Thema nehmen können, wenn wir kein Package verwendet hätten, welches bei der Ausführung des Pathfinding-Algorithmus hilft.
-Während unseres Projekts haben wir versucht, die Bewegung des Spielers, sowie der Gegner möglichst fehlerfrei umzusetzen und haben Animationen genutzt, um das Spiel lebhafter zu machen.
+Während unseres Projekts haben wir versucht, die Bewegung des Spielers, sowie der Gegner mithilfe von entsprechenden Animationen lebhafter zu gestalten.
 Auch haben wir versucht, viel Zeit darauf zu verwenden, ansprechende Tilemaps für die Szenen zu erstellen, die auch einigermaßen schön aussehen.
 Eine weitere interessante Erfahrung war das Arbeiten mit den 2D-Lichtern von Unity. Hier konnten wir in der CaveScene mit den verschiedenen Lichttypen herumexperimentieren
 und haben auch Erfahrungen im Erstellen von Animationen für ebendiese gemacht.
