@@ -4653,6 +4653,11 @@ PrefabInstance:
       propertyPath: groundMask.m_Bits
       value: 1079
       objectReference: {fileID: 0}
+    - target: {fileID: 3318729682226909965, guid: c6d201d7a948a444fa2f67e9f10b6c70,
+        type: 3}
+      propertyPath: onGroundThreshold
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6d201d7a948a444fa2f67e9f10b6c70, type: 3}
 --- !u!1 &776262477 stripped

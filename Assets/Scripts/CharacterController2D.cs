@@ -41,7 +41,7 @@ public class CharacterController2D : MonoBehaviour
         isGrounded = checkGrounded();
 
         //Checking for threshold, because, player shouldn't trigger checkGrounded, when colliding with obstacle while moving upwards
-        if(isGrounded && !hasJumped && rigidbody.velocity.y <=  onGroundThreshold && wasGrounded)
+        if(isGrounded && !hasJumped && rigidbody.velocity.y <=  onGroundThreshold && !wasGrounded)
         {
             hasJumped = true;
             OnLandEvent.Invoke();
