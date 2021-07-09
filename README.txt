@@ -9,7 +9,7 @@ Besondere Leistungen, Herausforderungen und gesammelte Erfahrungen:
 Unser Ziel war es in unserem Projekt verschiedene Themen der 2D-Entwicklung zu erläutern mit einem Jump'n'Run-Spiel als Grundlage.
 Nach der Einarbeitung in das Thema der 2D-Entwicklung, waren vor allem das Verhalten des Spielers und der Gegner eine Herausforderung. 
 Bei dem Opossum als Gegner war die Bewegung noch sehr simpel, wohingegen wir vor einer Herausforderung standen, als wir einen Vogel als Gegner umsetzen wollten.
-Das führte uns schließlich zum Thema Pathfinding, was sehr umfachreich hätte werden können, wenn wir den ganzen Algorithmus von Grund auf implementiert hätten.
+Das führte uns schließlich zum Thema Pathfinding, was sehr umfangreich hätte werden können, wenn wir den ganzen Algorithmus von Grund auf implementiert hätten.
 Womöglich hätten wir es im Nachhinein auch als einziges Thema nehmen können, wenn wir kein Package verwendet hätten, welches bei der Ausführung des Pathfinding-Algorithmus hilft.
 Während unseres Projekts haben wir versucht, die Bewegung des Spielers, sowie der Gegner mithilfe von entsprechenden Animationen lebhafter zu gestalten.
 Auch haben wir versucht, viel Zeit darauf zu verwenden, ansprechende Tilemaps für die Szenen zu erstellen, die auch einigermaßen schön aussehen.
@@ -44,4 +44,3 @@ Inspiration:
 
 
 Demo-Video: https://www.youtube.com/watch?v=zgjH1jqzj5Y
-Projekt: 
