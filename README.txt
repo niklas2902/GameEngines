@@ -37,6 +37,7 @@ Inspiration:
 	- https://www.youtube.com/watch?v=6Q0FnPy9Orc
 - 2D Movement:
 	- https://www.youtube.com/watch?v=dwcT-Dch0bA (Grundlegende Ideen übernommen, manche Methoden heißen gleich. Allerdings wurden zum größten Teil die Scripte überarbeitet und erweitert)
+	- https://www.youtube.com/watch?v=hkaysu1Z-N8 (Animationen)
 - Pathfinding:
 	- https://www.youtube.com/watch?v=jvtFUfJ6CP8 (Erster Berührungspunkt mit dem Thema, Grundlage unserer Implementierung; überarbeitet und erweitert)
 	- https://arongranberg.com/astar/docs/ (Package-Doku)
